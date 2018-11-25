@@ -38,7 +38,7 @@ class Robot : public cnoid::Body {
   void update(const Vector3 &waist_pos, const Matrix3 &waist_rot);
   void update(const rl &sup_foot, const Vector3 &sup_sole_pos,
               const Matrix3 &sup_sole_rot);
-  void update(const std::vector<double> angles);
+  void update(const std::vector<double> &angles);
 
   bool calcTrajetory(const std::string &base_link_name,
                      const std::string &tip_link_name,

@@ -219,7 +219,7 @@ void Robot::update(const rl &sup_leg, const Vector3 &sup_sole_pos,
  *
  * @param angles: All joint angles. angles[i] and joint id need to be same.
  */
-void Robot::update(const std::vector<double> angles) {
+void Robot::update(const std::vector<double> &angles) {
   if (static_cast<int>(angles.size()) != this->numJoints()) {
     std::cerr << "[Robot] angles size and robot dof are not same.\n"
               << "angles.size: " << angles.size()
