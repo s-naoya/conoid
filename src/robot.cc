@@ -199,6 +199,9 @@ void Robot::update(const Vector3 &waist_pos, const Matrix3 &waist_rot) {
 void Robot::update(const rl &sup_leg, const Vector3 &sup_sole_pos,
                    const Matrix3 &sup_sole_rot) {
   if (sup_leg == both or sup_leg == null) {
+    std::cerr << "[Robot] Robot Can't update.\n"
+              << "You have to specify right or left to sup_leg.\n"
+              << "specified sup_leg: " << sup_leg << std::endl;
     return;
   }
 
@@ -222,11 +225,11 @@ void Robot::update(const rl &sup_leg, const Vector3 &sup_sole_pos,
  * @return true: successed
  * @return false: failed
  */
-bool Robot::calcTrajetory(
-    const std::string &base_link_name, const std::string &tip_link_name,
-    const std::vector<Vector3> &tip_pos_trajetory,
-    const std::vector<Matrix3> &tip_rot_trajetory,
-    std::vector<std::vector<double>> *calced_angles) {
+bool Robot::calcTrajetory(const std::string &base_link_name,
+                          const std::string &tip_link_name,
+                          const std::vector<Vector3> &tip_pos_trajetory,
+                          const std::vector<Matrix3> &tip_rot_trajetory,
+                          std::vector<std::vector<double>> *calced_angles) {
   // get specified joint path
   cnoid::JointPathPtr joint_path = getCustomJointPath(
       this, this->link(base_link_name), this->link(tip_link_name));
