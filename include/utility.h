@@ -65,8 +65,11 @@ inline Vector3 q2rpy(const Quat &q) { return mat2rpy(q.toRotationMatrix()); }
 inline Quat mat2q(const Matrix3 &m) { return Quat(m); }
 inline rl reverse_foot(rl foot) {
   rl out(foot);
-  if (out == right) { out = left; }
-  else if (out == left) { out = right; }
+  if (out == right) {
+    out = left;
+  } else if (out == left) {
+    out = right;
+  }
   return out;
 }
 
@@ -84,6 +87,15 @@ class Pose {  // 3D position and posture
 
   const Quat &q() const { return q_; }
   Quat &q() { return q_; }
+
+  const Matrix3 R() const { return q_.toRotationMatrix(); }
+  void R(Matrix3 &R) { q_ = Quat(R); }
+
+  const Affine af() const { return Affine(Trans(p_)*q_); }
+  void af(Affine &a) {
+    p_ = a.translation();
+    q_ = Quat(a.linear());
+  }
 
  private:
   Vector3 p_;  // position

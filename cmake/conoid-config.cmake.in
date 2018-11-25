@@ -1,0 +1,11 @@
+# Use the following variables to compile and link against Conoid:
+# CHOREONOID_ROOT_DIR         - The base directory of Conoid
+# CHOREONOID_INCLUDE_DIRS     - List of directories of Conoid and it's dependencies
+# CHOREONOID_LIBRARY_DIRS     - List of directories of Conoid and it's dependencies
+# CHOREONOID_LIBRARIES        - List of directories of Conoid and it's dependenciesset(CONOID_ROOT_DIR "@CNOID_DIR@")
+
+set(CONOID_ROOT_DIR @con_dir@)
+
+set(CONOID_INCLUDE_DIRS @include_dirs@)
+set(CONOID_LIBRARY_DIRS @library_dirs@)
+set(CONOID_LIBRARIES @libs@)

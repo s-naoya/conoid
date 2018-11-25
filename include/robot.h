@@ -14,7 +14,6 @@
 #include <string>
 
 #include <cnoid/Body>
-#include <cnoid/JointPath>
 
 #include "utility.h"
 
@@ -22,7 +21,7 @@ namespace con {
 
 class Robot : public cnoid::Body {
  public:
-  Robot();
+  Robot() {}
 
   // setting
   bool loadModel(const std::string &model_file_path);
