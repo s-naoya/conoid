@@ -215,6 +215,23 @@ void Robot::update(const rl &sup_leg, const Vector3 &sup_sole_pos,
 }
 
 /**
+ * @brief update body model by joint angles
+ *
+ * @param angles: All joint angles. angles[i] and joint id need to be same.
+ */
+void Robot::update(const std::vector<double> angles) {
+  if (static_cast<int>(angles.size()) != this->numJoints()) {
+    std::cerr << "[Robot] angles size and robot dof are not same.\n"
+              << "angles.size: " << angles.size()
+              << "robot dof: " << this->numJoints() << std::endl;
+  }
+  for (size_t i = 0, n = angles.size(); i < n; ++i) {
+    this->joint(i)->q() = angles[i];
+  }
+  calcForwardKinematics();
+}
+
+/**
  * @brief calc joint angle along trajectory
  *
  * @param base_link_name
